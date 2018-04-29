@@ -1,0 +1,16 @@
+<?xml version="1.0" encoding="utf-8"?>
+<menu xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto">
+
+
+
+    <item android:title="Cài đặt"
+        android:id="@+id/btn_setting"
+        app:showAsAction="never"
+        ></item>
+
+    <item android:title="Đăng xuất"
+        android:id="@+id/btn_logout"
+        app:showAsAction="never"
+        ></item>
+</menu>

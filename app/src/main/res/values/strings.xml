@@ -1,3 +1,8 @@
 <resources>
     <string name="app_name">Chatter</string>
+    <string name="login_name">Đăng nhập</string>
+    <string name="register_name">Đăng kí</string>
+
+    <!-- TODO: Remove or change this placeholder text -->
+    <string name="hello_blank_fragment">Hello blank fragment</string>
 </resources>

@@ -1,0 +1,55 @@
+{
+  "project_info": {
+    "project_number": "616483986984",
+    "firebase_url": "https://chatter-28e4a.firebaseio.com",
+    "project_id": "chatter-28e4a",
+    "storage_bucket": "chatter-28e4a.appspot.com"
+  },
+  "client": [
+    {
+      "client_info": {
+        "mobilesdk_app_id": "1:616483986984:android:39c986f89f9b1c64",
+        "android_client_info": {
+          "package_name": "com.example.luffy.chatter"
+        }
+      },
+      "oauth_client": [
+        {
+          "client_id": "616483986984-c7pu6pjp7t5csmt35dnghlfjm36q64vt.apps.googleusercontent.com",
+          "client_type": 1,
+          "android_info": {
+            "package_name": "com.example.luffy.chatter",
+            "certificate_hash": "580bbe229c3c69968d1e57f9c8937390d130513d"
+          }
+        },
+        {
+          "client_id": "616483986984-b645hd69uteqvhpta7puh0o7mof82g90.apps.googleusercontent.com",
+          "client_type": 3
+        }
+      ],
+      "api_key": [
+        {
+          "current_key": "AIzaSyALPiVdtFws0xbN-Ac3aAGoql-cnoRGW00"
+        }
+      ],
+      "services": {
+        "analytics_service": {
+          "status": 1
+        },
+        "appinvite_service": {
+          "status": 2,
+          "other_platform_oauth_client": [
+            {
+              "client_id": "616483986984-b645hd69uteqvhpta7puh0o7mof82g90.apps.googleusercontent.com",
+              "client_type": 3
+            }
+          ]
+        },
+        "ads_service": {
+          "status": 2
+        }
+      }
+    }
+  ],
+  "configuration_version": "1"
+}
