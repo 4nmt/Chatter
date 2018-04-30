@@ -57,6 +57,9 @@ public class LoginActivity extends AppCompatActivity {
                 String password = loginPassword.getText().toString();
 
 
+                loadingBar.setTitle("Đăng nhâp");
+                loadingBar.setMessage("Làm ơn đợi một lát, để chúng tôi cập nhật thông tin cho bạn");
+                loadingBar.show();
                 if(TextUtils.isEmpty(email))
                 {
                     Toast.makeText(LoginActivity.this, "Email không được rỗng",
@@ -84,10 +87,9 @@ public class LoginActivity extends AppCompatActivity {
                     public void onComplete(@NonNull Task<AuthResult> task) {
                         if (task.isSuccessful()) {
 
-                            loadingBar.setTitle("Tạo tài khoản mới");
-                            loadingBar.setMessage("Làm ơn đợi một lát, để chúng tôi tạo tài khoản cho bạn");
 
                             Intent mainIntent = new Intent(LoginActivity.this,MainActivity.class);
+                            mainIntent.addFlags( Intent.FLAG_ACTIVITY_NEW_TASK | Intent.FLAG_ACTIVITY_CLEAR_TASK);
                             startActivity(mainIntent);
                             finish();
                         } else {
@@ -102,16 +104,4 @@ public class LoginActivity extends AppCompatActivity {
                 });
     }
 
-    @Override
-    public boolean onOptionsItemSelected(MenuItem item) {
-        super.onOptionsItemSelected(item);
-
-        if(item.getItemId() == android.R.id.home) {
-            Intent intent = new Intent(this, StartActivity.class);
-            intent.addFlags(Intent.FLAG_ACTIVITY_CLEAR_TOP);
-            startActivity(intent);
-        }
-
-        return  true;
-    }
 }

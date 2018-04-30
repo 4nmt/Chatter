@@ -70,6 +70,11 @@ public class MainActivity extends AppCompatActivity {
             mAuth.signOut();
             LogOutUser();
         }
+        if(item.getItemId() == R.id.btn_setting){
+            Intent settingsIntent = new Intent(MainActivity.this,SettingsActivity.class);
+            startActivity(settingsIntent);
+           // finish();
+        }
         return  true;
     }
 
