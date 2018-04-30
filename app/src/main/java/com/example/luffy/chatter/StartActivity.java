@@ -24,10 +24,7 @@ public class StartActivity extends AppCompatActivity {
             @Override
             public void onClick(View v) {
                 Intent loginIntent = new Intent(StartActivity.this,LoginActivity.class);
-                loginIntent.addFlags( Intent.FLAG_ACTIVITY_NEW_TASK | Intent.FLAG_ACTIVITY_CLEAR_TASK);
                 startActivity(loginIntent);
-
-                finish();
             }
         });
 
@@ -35,10 +32,7 @@ public class StartActivity extends AppCompatActivity {
             @Override
             public void onClick(View v) {
                 Intent registerIntent = new Intent(StartActivity.this,RegisterActivity.class);
-                registerIntent.addFlags( Intent.FLAG_ACTIVITY_NEW_TASK  | Intent.FLAG_ACTIVITY_CLEAR_TASK);
                 startActivity(registerIntent);
-
-                finish();
             }
         });
 

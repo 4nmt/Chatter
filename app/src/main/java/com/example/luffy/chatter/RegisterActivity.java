@@ -20,6 +20,10 @@ import com.google.android.gms.tasks.Task;
 import com.google.firebase.auth.AuthResult;
 import com.google.firebase.auth.FirebaseAuth;
 import com.google.firebase.auth.FirebaseUser;
+import com.google.firebase.database.DatabaseReference;
+import com.google.firebase.database.FirebaseDatabase;
+
+import java.util.HashMap;
 
 public class RegisterActivity extends AppCompatActivity {
 
@@ -32,7 +36,7 @@ public class RegisterActivity extends AppCompatActivity {
     ProgressDialog loadingBar;
 
 
-
+    private DatabaseReference mDatabase;
     private FirebaseAuth mAuth;
 
     @Override
@@ -60,6 +64,9 @@ public class RegisterActivity extends AppCompatActivity {
                 String email = edtEmail.getText().toString();
                 String password = edtPass.getText().toString();
 
+                loadingBar.setTitle("Tạo tài khoản mới");
+                loadingBar.setMessage("Làm ơn đợi một lát, để chúng tôi tạo tài khoản cho bạn");
+                loadingBar.show();
                 if(TextUtils.isEmpty(display_name))
                 {
                     Toast.makeText(RegisterActivity.this, "Tên hiển thị không được rỗng",
@@ -84,19 +91,36 @@ public class RegisterActivity extends AppCompatActivity {
         });
     }
 
-    private void register_user(String display_name,String email ,String password){
+    private void register_user(final String display_name, String email , String password){
         mAuth.createUserWithEmailAndPassword(email, password)
                 .addOnCompleteListener(this, new OnCompleteListener<AuthResult>() {
                     @Override
                     public void onComplete(@NonNull Task<AuthResult> task) {
                         if (task.isSuccessful()) {
 
-                            loadingBar.setTitle("Tạo tài khoản mới");
-                            loadingBar.setMessage("Làm ơn đợi một lát, để chúng tôi tạo tài khoản cho bạn");
+                            FirebaseUser current_user = FirebaseAuth.getInstance().getCurrentUser();
+                            String uid = current_user.getUid();
 
-                            Intent mainIntent = new Intent(RegisterActivity.this,MainActivity.class);
-                            startActivity(mainIntent);
-                            finish();
+                            mDatabase = FirebaseDatabase.getInstance().getReference().child("User").child(uid);
+
+                            HashMap<String,String> userMap = new HashMap<>();
+
+                            userMap.put("name", display_name);
+                            userMap.put("image", "default");
+                            userMap.put("status", "Đang sử dụng app");
+                            userMap.put("thumb_image", "default");
+
+                            mDatabase.setValue(userMap).addOnCompleteListener(new OnCompleteListener<Void>() {
+                                @Override
+                                public void onComplete(@NonNull Task<Void> task) {
+                                    Intent mainIntent = new Intent(RegisterActivity.this,MainActivity.class);
+                                    mainIntent.addFlags( Intent.FLAG_ACTIVITY_NEW_TASK | Intent.FLAG_ACTIVITY_CLEAR_TASK);
+                                    startActivity(mainIntent);
+                                    finish();
+                                }
+                            });
+
+
 
                         } else {
 
@@ -108,16 +132,5 @@ public class RegisterActivity extends AppCompatActivity {
                 });
     }
 
-    @Override
-    public boolean onOptionsItemSelected(MenuItem item) {
-        super.onOptionsItemSelected(item);
 
-        if(item.getItemId() == android.R.id.home) {
-            Intent intent = new Intent(this, StartActivity.class);
-            intent.addFlags(Intent.FLAG_ACTIVITY_CLEAR_TOP);
-            startActivity(intent);
-        }
-
-        return  true;
-    }
 }
