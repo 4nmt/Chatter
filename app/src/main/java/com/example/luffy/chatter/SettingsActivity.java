@@ -65,6 +65,8 @@ public class SettingsActivity extends AppCompatActivity {
         btn_change_image = (Button) findViewById(R.id.btn_setting_avatar);
         btn_change_status = (Button) findViewById(R.id.btn_setting_status);
 
+        getSupportActionBar().setDisplayHomeAsUpEnabled(true);
+
         mImageStorage = FirebaseStorage.getInstance().getReference();
 
 

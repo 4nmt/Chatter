@@ -4,8 +4,13 @@
 
 
 
-    <item android:title="Cài đặt"
+    <item android:title="Cài đặt tài khoản"
         android:id="@+id/btn_setting"
+        app:showAsAction="never"
+        ></item>
+
+    <item android:title="Danh sách người chơi"
+        android:id="@+id/btn_user_list"
         app:showAsAction="never"
         ></item>
 
