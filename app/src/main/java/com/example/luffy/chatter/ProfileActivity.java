@@ -39,6 +39,7 @@ public class ProfileActivity extends AppCompatActivity {
     FirebaseUser mCurrent_user;
     DatabaseReference mFriendReqDatabase;
     DatabaseReference mFriendDatabase;
+    DatabaseReference mNotificationDatabase;
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
@@ -57,7 +58,7 @@ public class ProfileActivity extends AppCompatActivity {
         mFriendReqDatabase = FirebaseDatabase.getInstance().getReference().child("Friend_req");
         mFriendDatabase = FirebaseDatabase.getInstance().getReference().child("Friends");
         mDeclineBtn = (Button) findViewById(R.id.profile_decline_btn);
-
+        mNotificationDatabase = FirebaseDatabase.getInstance().getReference().child("notifications");
 
         mCurrent_state = "not_friends";
 
