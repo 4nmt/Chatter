@@ -1,5 +1,6 @@
 package com.example.luffy.chatter;
 
+import android.content.Context;
 import android.content.Intent;
 import android.support.annotation.NonNull;
 import android.support.v7.app.AppCompatActivity;
@@ -16,6 +17,9 @@ import com.firebase.ui.database.FirebaseRecyclerAdapter;
 import com.firebase.ui.database.FirebaseRecyclerOptions;
 import com.google.firebase.database.DatabaseReference;
 import com.google.firebase.database.FirebaseDatabase;
+import com.squareup.picasso.Picasso;
+
+import de.hdodenhof.circleimageview.CircleImageView;
 
 public class UsersActivity extends AppCompatActivity {
 
@@ -62,6 +66,8 @@ public class UsersActivity extends AppCompatActivity {
             protected void onBindViewHolder(@NonNull UsersViewHolder holder, int position, @NonNull Users model) {
 
                 holder.setName(model.name);
+                holder.setUserStatus(model.getStatus());
+                holder.setUserImage(model.getImage(), getApplicationContext());
 
                 final String user_id = getRef(position).getKey();
 
@@ -101,5 +107,21 @@ public class UsersActivity extends AppCompatActivity {
             TextView usernameView = mView.findViewById(R.id.user_single_name);
             usernameView.setText(name);
         }
+        public void setUserStatus(String status){
+
+            TextView userStatusView = (TextView) mView.findViewById(R.id.user_single_status);
+            userStatusView.setText(status);
+
+
+        }
+
+        public void setUserImage(String thumb_image, Context ctx){
+
+            CircleImageView userImageView = (CircleImageView) mView.findViewById(R.id.user_single_image);
+
+            Picasso.get().load(thumb_image).placeholder(R.drawable.avatar_default).into(userImageView);
+
+        }
+
     }
 }
