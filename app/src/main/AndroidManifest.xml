@@ -23,6 +23,10 @@
             android:name=".StartActivity"
             android:launchMode="singleTop" />
         <activity
+            android:name=".RegisterActivity"
+            android:label="@string/register_name"
+            android:parentActivityName=".StartActivity" />
+        <activity
             android:name=".LoginActivity"
             android:label="@string/login_name"
             android:parentActivityName=".StartActivity" />

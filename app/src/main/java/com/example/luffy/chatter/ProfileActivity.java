@@ -36,9 +36,9 @@ public class ProfileActivity extends AppCompatActivity {
 
         mProfileImage = (ImageView) findViewById(R.id.profile_image);
         mProfileSendReqBtn = (Button) findViewById(R.id.profile_send_req_btn);
-        mProfileName = (TextView) findViewById(R.id.profile_name);
-        mProfileStatus = (TextView) findViewById(R.id.profile_name);
-        mProfileFriendsCount = (TextView) findViewById(R.id.profile_name);
+        mProfileName = (TextView) findViewById(R.id.profile_displayName);
+        mProfileStatus = (TextView) findViewById(R.id.profile_status);
+        mProfileFriendsCount = (TextView) findViewById(R.id.profile_totalFriends);
 
 
         loadingBar = new ProgressDialog(ProfileActivity.this);
