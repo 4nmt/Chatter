@@ -86,7 +86,7 @@ public class RegisterActivity extends AppCompatActivity {
 
                 }
                 else
-                register_user(display_name,email,password);
+                    register_user(display_name,email,password);
             }
         });
     }
