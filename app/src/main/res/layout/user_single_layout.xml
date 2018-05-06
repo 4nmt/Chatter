@@ -6,7 +6,7 @@
 
 
     <de.hdodenhof.circleimageview.CircleImageView
-        android:id="@+id/user_single_image"
+        android:id="@+id/request_profile_image"
         android:layout_width="85dp"
         android:layout_height="66dp"
         android:layout_alignParentStart="true"
@@ -16,7 +16,7 @@
         android:src="@drawable/avatar_default" />
 
     <TextView
-        android:id="@+id/user_single_name"
+        android:id="@+id/request_profile_name"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:layout_alignParentStart="true"
@@ -32,7 +32,7 @@
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:layout_alignParentTop="true"
-        android:layout_alignStart="@+id/user_single_name"
+        android:layout_alignStart="@+id/request_profile_name"
         android:layout_marginTop="60dp"
         android:text="Trạng thái mặc định" />
 
@@ -44,5 +44,5 @@
         android:layout_centerVertical="true"
         android:layout_marginEnd="81dp"
         android:visibility="invisible"
-        app:srcCompat="@drawable/online_icon" />
+        />
 </RelativeLayout>

@@ -7,7 +7,6 @@ import android.content.DialogInterface;
 import android.content.Intent;
 import android.os.Bundle;
 import android.support.annotation.NonNull;
-import android.support.annotation.Nullable;
 import android.support.v4.app.Fragment;
 import android.support.v7.app.AlertDialog;
 import android.support.v7.widget.LinearLayoutManager;
@@ -31,9 +30,7 @@ import com.squareup.picasso.Picasso;
 import de.hdodenhof.circleimageview.CircleImageView;
 
 
-/**
- * A simple {@link Fragment} subclass.
- */
+
 public class FriendsFragment extends Fragment {
 
     private RecyclerView mFriendsList;
@@ -51,7 +48,6 @@ public class FriendsFragment extends Fragment {
     public FriendsFragment() {
         // Required empty public constructor
     }
-
 
     @Override
     public View onCreateView(LayoutInflater inflater, ViewGroup container,
@@ -197,14 +193,14 @@ public class FriendsFragment extends Fragment {
 
         public void setName(String name){
 
-            TextView userNameView = (TextView) mView.findViewById(R.id.user_single_name);
+            TextView userNameView = (TextView) mView.findViewById(R.id.request_profile_name);
             userNameView.setText(name);
 
         }
 
         public void setUserImage(String thumb_image, Context ctx){
 
-            CircleImageView userImageView = (CircleImageView) mView.findViewById(R.id.user_single_image);
+            CircleImageView userImageView = (CircleImageView) mView.findViewById(R.id.request_profile_image);
             Picasso.get().load(thumb_image).placeholder(R.drawable.avatar_default).into(userImageView);
 
         }
