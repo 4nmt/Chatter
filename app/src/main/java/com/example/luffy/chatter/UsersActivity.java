@@ -105,7 +105,7 @@ public class UsersActivity extends AppCompatActivity {
 
         public void setName(String name){
 
-            TextView usernameView = mView.findViewById(R.id.user_single_name);
+            TextView usernameView = mView.findViewById(R.id.request_profile_name);
             usernameView.setText(name);
         }
         public void setUserStatus(String status){
@@ -118,7 +118,7 @@ public class UsersActivity extends AppCompatActivity {
 
         public void setUserImage(String thumb_image, Context ctx){
 
-            CircleImageView userImageView = (CircleImageView) mView.findViewById(R.id.user_single_image);
+            CircleImageView userImageView = (CircleImageView) mView.findViewById(R.id.request_profile_image);
 
             Picasso.get().load(thumb_image).placeholder(R.drawable.avatar_default).into(userImageView);
 

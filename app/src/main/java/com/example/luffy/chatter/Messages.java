@@ -1,11 +1,15 @@
 package com.example.luffy.chatter;
 
+<<<<<<< HEAD
+public class Messages {
+=======
 /**
  * Created by AkshayeJH on 24/07/17.
  */
 
 public class Messages {
 
+>>>>>>> master
     private String message, type;
     private long  time;
     private boolean seen;
@@ -66,5 +70,8 @@ public class Messages {
     public Messages(){
 
     }
+<<<<<<< HEAD
+=======
 
+>>>>>>> master
 }

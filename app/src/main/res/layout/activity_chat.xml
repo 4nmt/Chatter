@@ -1,22 +1,15 @@
 <?xml version="1.0" encoding="utf-8"?>
 <RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
-    xmlns:app="http://schemas.android.com/apk/res-auto"
-    xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    android:background="#ededed"
-    tools:context="com.example.luffy.chatter.ChatActivity">
-
-    <include
-        android:id="@+id/chat_app_bar"
-        layout="@layout/app_bar_layout" />
-
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    android:background="#ededed">
     <android.support.v4.widget.SwipeRefreshLayout
         android:id="@+id/message_swipe_layout"
         android:layout_width="match_parent"
         android:layout_height="match_parent"
         android:layout_above="@+id/linearLayout"
-        android:layout_alignParentLeft="true"
+        android:layout_alignParentStart="true"
         android:layout_below="@+id/chat_app_bar">
 
         <android.support.v7.widget.RecyclerView
@@ -24,7 +17,7 @@
             android:layout_width="match_parent"
             android:layout_height="match_parent"
             android:layout_above="@+id/linearLayout"
-            android:layout_alignParentLeft="true"
+            android:layout_alignParentStart="true"
             android:layout_below="@+id/chat_app_bar"></android.support.v7.widget.RecyclerView>
 
     </android.support.v4.widget.SwipeRefreshLayout>
@@ -34,7 +27,7 @@
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:layout_alignParentBottom="true"
-        android:layout_alignParentLeft="true"
+        android:layout_alignParentStart="true"
         android:background="@android:color/white"
         android:orientation="horizontal"
         android:weightSum="10">
@@ -47,7 +40,7 @@
             android:alpha="0.5"
             android:background="@android:color/white"
             android:padding="10dp"
-            app:srcCompat="@drawable/ic_add_black_24dp" />
+            app:srcCompat="@drawable/ic_add" />
 
         <EditText
             android:id="@+id/chat_message_view"
@@ -69,10 +62,8 @@
             android:layout_height="wrap_content"
             android:layout_weight="1"
             android:alpha="0.5"
-            android:background="@android:color/white"
+            android:background="@color/colorAccent"
             android:padding="10dp"
-            app:srcCompat="@drawable/ic_send_black_24dp" />
+            app:srcCompat="@drawable/ic_send" />
     </LinearLayout>
-
-
 </RelativeLayout>
