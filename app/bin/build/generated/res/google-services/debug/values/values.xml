@@ -1,0 +1,11 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+    <string name="default_web_client_id" translatable="false">616483986984-b645hd69uteqvhpta7puh0o7mof82g90.apps.googleusercontent.com</string>
+    <string name="firebase_database_url" translatable="false">https://chatter-28e4a.firebaseio.com</string>
+    <string name="gcm_defaultSenderId" translatable="false">616483986984</string>
+    <string name="google_api_key" translatable="false">AIzaSyALPiVdtFws0xbN-Ac3aAGoql-cnoRGW00</string>
+    <string name="google_app_id" translatable="false">1:616483986984:android:39c986f89f9b1c64</string>
+    <string name="google_crash_reporting_api_key" translatable="false">AIzaSyALPiVdtFws0xbN-Ac3aAGoql-cnoRGW00</string>
+    <string name="google_storage_bucket" translatable="false">chatter-28e4a.appspot.com</string>
+    <string name="project_id" translatable="false">chatter-28e4a</string>
+</resources>
