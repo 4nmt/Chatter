@@ -93,6 +93,11 @@ public class ChatActivity extends AppCompatActivity {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_chat);
 
+<<<<<<< HEAD
+=======
+        mChatToolbar = (Toolbar) findViewById(R.id.chat_app_bar);
+        setSupportActionBar(mChatToolbar);
+>>>>>>> master
 
         ActionBar actionBar = getSupportActionBar();
 
@@ -142,6 +147,7 @@ public class ChatActivity extends AppCompatActivity {
 
         mTitleView.setText(userName);
 
+<<<<<<< HEAD
         mRootRef.child("User").child(mChatUser).addValueEventListener(new ValueEventListener() {
             @Override
             public void onDataChange(DataSnapshot dataSnapshot) {
@@ -164,6 +170,30 @@ public class ChatActivity extends AppCompatActivity {
                   //  mLastSeenView.setText(lastSeenTime);
 
              //   }
+=======
+        mRootRef.child("Users").child(mChatUser).addValueEventListener(new ValueEventListener() {
+            @Override
+            public void onDataChange(DataSnapshot dataSnapshot) {
+
+                String online = dataSnapshot.child("online").getValue().toString();
+                String image = dataSnapshot.child("image").getValue().toString();
+
+                if(online.equals("true")) {
+
+                    mLastSeenView.setText("Online");
+
+                } else {
+
+                    GetTimeAgo getTimeAgo = new GetTimeAgo();
+
+                    long lastTime = Long.parseLong(online);
+
+                    String lastSeenTime = getTimeAgo.getTimeAgo(lastTime, getApplicationContext());
+
+                    mLastSeenView.setText(lastSeenTime);
+
+                }
+>>>>>>> master
 
             }
 
