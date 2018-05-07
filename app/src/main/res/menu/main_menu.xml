@@ -4,16 +4,23 @@
 
 
 
+
     <item android:title="Cài đặt tài khoản"
         android:id="@+id/btn_setting"
         app:showAsAction="never"
         ></item>
 
-    <item android:title="Danh sách người dùng"
+    <item
+        android:id="@+id/btn_find_username"
+        android:title="Tìm kiếm bằng username" />
+    <item android:title="Danh sách người chơi"
         android:id="@+id/btn_user_list"
         app:showAsAction="never"
         ></item>
-
+    <item android:title="Đổi password"
+        android:id="@+id/btn_change"
+        app:showAsAction="never"
+        ></item>
     <item android:title="Đăng xuất"
         android:id="@+id/btn_logout"
         app:showAsAction="never"

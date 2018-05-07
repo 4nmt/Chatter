@@ -100,6 +100,11 @@ public class MainActivity extends AppCompatActivity {
             Intent settingsIntent = new Intent(MainActivity.this,UsersActivity.class);
             startActivity(settingsIntent);
         }
+        if(item.getItemId() == R.id.btn_find_username)
+        {
+            Intent findUserIntent = new Intent(MainActivity.this, UserSearchActivity.class);
+            startActivity(findUserIntent);
+        }
         return  true;
     }
 

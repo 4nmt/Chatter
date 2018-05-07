@@ -10,6 +10,7 @@ import android.view.MenuItem;
 import android.view.View;
 import android.widget.Button;
 import android.widget.EditText;
+import android.widget.TextView;
 import android.widget.Toast;
 
 import com.google.android.gms.tasks.OnCompleteListener;
@@ -29,6 +30,8 @@ public class LoginActivity extends AppCompatActivity {
     EditText loginEmail;
     EditText loginPassword;
 
+    TextView forget_text;
+
     ProgressDialog loadingBar;
     private FirebaseAuth mAuth;
     DatabaseReference mUserDatabase;
@@ -42,7 +45,7 @@ public class LoginActivity extends AppCompatActivity {
 
         btnLogin = (Button) findViewById(R.id.btnLogin);
 
-
+        forget_text = (TextView) findViewById(R.id.forget_password_view);
         loginEmail = (EditText) findViewById(R.id.login_email);
         loginPassword = (EditText) findViewById(R.id.login_pass);
 
@@ -52,6 +55,15 @@ public class LoginActivity extends AppCompatActivity {
 
         mAuth = FirebaseAuth.getInstance();
 
+        forget_text.setOnClickListener(new View.OnClickListener(){
+
+            @Override
+            public void onClick(View v) {
+                Intent forget_password = new Intent(LoginActivity.this, ForgetPasswordActivity.class);
+                startActivity(forget_password);
+                finish();
+            }
+        });
         btnLogin.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
@@ -94,22 +106,23 @@ public class LoginActivity extends AppCompatActivity {
 
                     loadingBar.dismiss();
 
-                  //  String current_user_id = mAuth.getCurrentUser().getUid();
-                  //  String deviceToken = FirebaseInstanceId.getInstance().getToken();
+                    //  String current_user_id = mAuth.getCurrentUser().getUid();
+                    //  String deviceToken = FirebaseInstanceId.getInstance().getToken();
 
-                  //  mUserDatabase.child(current_user_id).child("device_token").setValue(deviceToken).addOnSuccessListener(new OnSuccessListener<Void>() {
-                  //      @Override
-                  //      public void onSuccess(Void aVoid) {
-
-
+                    //  mUserDatabase.child(current_user_id).child("device_token").setValue(deviceToken).addOnSuccessListener(new OnSuccessListener<Void>() {
+                    //      @Override
+                    //      public void onSuccess(Void aVoid) {
 
 
-                 //       }
-                //    });
+
+
+                    //       }
+                    //    });
                     Intent mainIntent = new Intent(LoginActivity.this, MainActivity.class);
                     mainIntent.addFlags(Intent.FLAG_ACTIVITY_NEW_TASK | Intent.FLAG_ACTIVITY_CLEAR_TASK);
                     startActivity(mainIntent);
                     finish();
+
 
 
                 } else {
