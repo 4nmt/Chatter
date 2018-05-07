@@ -9,7 +9,7 @@
         app:showAsAction="never"
         ></item>
 
-    <item android:title="Danh sách người chơi"
+    <item android:title="Danh sách người dùng"
         android:id="@+id/btn_user_list"
         app:showAsAction="never"
         ></item>

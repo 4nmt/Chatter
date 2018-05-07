@@ -1,9 +1,6 @@
 package com.example.luffy.chatter;
 
-<<<<<<< HEAD
 
-=======
->>>>>>> master
 public class Friends {
 
     public String date;

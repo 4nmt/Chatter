@@ -116,7 +116,7 @@ public class SettingsActivity extends AppCompatActivity {
                 mName.setText(name);
                 mStatus.setText(status);
 
-                Picasso.get().load(image).into(mDisplayImage);
+                Picasso.get().load(image).placeholder(R.drawable.avatar_default).into(mDisplayImage);
 
             }
 

@@ -4,17 +4,15 @@ import android.content.Context;
 import android.graphics.Color;
 import android.os.Message;
 import android.support.v7.widget.RecyclerView;
+import android.util.Log;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
 import android.widget.ImageView;
 import android.widget.TextView;
+import android.widget.Toast;
 
-<<<<<<< HEAD
-=======
-import com.example.luffy.chatter.Messages;
-import com.example.luffy.chatter.R;
->>>>>>> master
+
 import com.google.firebase.auth.FirebaseAuth;
 import com.google.firebase.database.DataSnapshot;
 import com.google.firebase.database.DatabaseError;
@@ -27,15 +25,14 @@ import java.util.List;
 
 import de.hdodenhof.circleimageview.CircleImageView;
 
-/**
- * Created by AkshayeJH on 24/07/17.
- */
+
 
 public class MessageAdapter extends RecyclerView.Adapter<MessageAdapter.MessageViewHolder>{
 
 
     private List<Messages> mMessageList;
     private DatabaseReference mUserDatabase;
+
 
     public MessageAdapter(List<Messages> mMessageList) {
 
@@ -79,35 +76,26 @@ public class MessageAdapter extends RecyclerView.Adapter<MessageAdapter.MessageV
         String from_user = c.getFrom();
         String message_type = c.getType();
 
-
-<<<<<<< HEAD
         mUserDatabase = FirebaseDatabase.getInstance().getReference().child("User").child(from_user);
-=======
-        mUserDatabase = FirebaseDatabase.getInstance().getReference().child("Users").child(from_user);
->>>>>>> master
 
         mUserDatabase.addValueEventListener(new ValueEventListener() {
             @Override
             public void onDataChange(DataSnapshot dataSnapshot) {
 
                 String name = dataSnapshot.child("name").getValue().toString();
-<<<<<<< HEAD
+
                 String image = dataSnapshot.child("image").getValue().toString();
 
                 viewHolder.displayName.setText(name);
 
                 Picasso.get().load(image)
                         .placeholder(R.drawable.avatar_default).into(viewHolder.profileImage);
-=======
-                String image = dataSnapshot.child("thumb_image").getValue().toString();
-
-                viewHolder.displayName.setText(name);
 
 
 
                 //Picasso.with(viewHolder.profileImage.getContext()).load(image).placeholder(R.drawable.avatar_default).into(viewHolder.profileImage);
-                Picasso.get().load(image).placeholder(R.drawable.avatar_default).into(viewHolder.profileImage);
->>>>>>> master
+              //  Picasso.get().load(image).placeholder(R.drawable.avatar_default).into(viewHolder.profileImage);
+
 
             }
 
@@ -126,17 +114,14 @@ public class MessageAdapter extends RecyclerView.Adapter<MessageAdapter.MessageV
         } else {
 
             viewHolder.messageText.setVisibility(View.INVISIBLE);
-<<<<<<< HEAD
+
             Picasso.get().load(c.getMessage())
                     .placeholder(R.drawable.avatar_default).into(viewHolder.messageImage);
-=======
-            //Picasso.with(viewHolder.profileImage.getContext()).load(c.getMessage()).placeholder(R.drawable.avatar_default).into(viewHolder.messageImage);
-            Picasso.get().load(c.getMessage()).placeholder(R.drawable.avatar_default).into(viewHolder.profileImage);
-
-
->>>>>>> master
 
         }
+
+
+
 
     }
 

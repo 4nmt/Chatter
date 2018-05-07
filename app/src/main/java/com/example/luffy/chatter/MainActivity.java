@@ -29,7 +29,6 @@ public class MainActivity extends AppCompatActivity {
         setContentView(R.layout.activity_main);
 
         mAuth = FirebaseAuth.getInstance();
-
         viewPager = (ViewPager) findViewById(R.id.main_tabs_pager);
 
         tabsPagerAdapter = new TabsPagerAdapter(getSupportFragmentManager());
@@ -62,7 +61,19 @@ public class MainActivity extends AppCompatActivity {
         }
 
     }
+    @Override
+    protected void onStop() {
+        super.onStop();
 
+        FirebaseUser currentUser = mAuth.getCurrentUser();
+
+        if(currentUser != null) {
+
+            mUserRef.child("online").setValue(false);
+
+        }
+
+    }
     @Override
     public boolean onCreateOptionsMenu(Menu menu) {
          super.onCreateOptionsMenu(menu);

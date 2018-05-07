@@ -94,23 +94,22 @@ public class LoginActivity extends AppCompatActivity {
 
                     loadingBar.dismiss();
 
-                    String current_user_id = mAuth.getCurrentUser().getUid();
-                    String deviceToken = FirebaseInstanceId.getInstance().getToken();
+                  //  String current_user_id = mAuth.getCurrentUser().getUid();
+                  //  String deviceToken = FirebaseInstanceId.getInstance().getToken();
 
-                    mUserDatabase.child(current_user_id).child("device_token").setValue(deviceToken).addOnSuccessListener(new OnSuccessListener<Void>() {
-                        @Override
-                        public void onSuccess(Void aVoid) {
-
-                            Intent mainIntent = new Intent(LoginActivity.this, MainActivity.class);
-                            mainIntent.addFlags(Intent.FLAG_ACTIVITY_NEW_TASK | Intent.FLAG_ACTIVITY_CLEAR_TASK);
-                            startActivity(mainIntent);
-                            finish();
+                  //  mUserDatabase.child(current_user_id).child("device_token").setValue(deviceToken).addOnSuccessListener(new OnSuccessListener<Void>() {
+                  //      @Override
+                  //      public void onSuccess(Void aVoid) {
 
 
-                        }
-                    });
 
 
+                 //       }
+                //    });
+                    Intent mainIntent = new Intent(LoginActivity.this, MainActivity.class);
+                    mainIntent.addFlags(Intent.FLAG_ACTIVITY_NEW_TASK | Intent.FLAG_ACTIVITY_CLEAR_TASK);
+                    startActivity(mainIntent);
+                    finish();
 
 
                 } else {

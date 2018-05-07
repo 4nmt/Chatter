@@ -23,6 +23,8 @@ import android.widget.ImageView;
 import android.widget.TextView;
 import android.widget.Toast;
 
+import com.example.luffy.chatter.MessageAdapter;
+import com.example.luffy.chatter.Messages;
 import com.google.android.gms.tasks.OnCompleteListener;
 import com.google.android.gms.tasks.Task;
 import com.google.firebase.auth.FirebaseAuth;
@@ -37,6 +39,7 @@ import com.google.firebase.database.ValueEventListener;
 import com.google.firebase.storage.FirebaseStorage;
 import com.google.firebase.storage.StorageReference;
 import com.google.firebase.storage.UploadTask;
+import com.squareup.picasso.Picasso;
 import com.theartofdev.edmodo.cropper.CropImage;
 
 import org.w3c.dom.Text;
@@ -52,7 +55,7 @@ public class ChatActivity extends AppCompatActivity {
 
     private String mChatUser;
     private Toolbar mChatToolbar;
-
+    private DatabaseReference mUserDatabase;
     private DatabaseReference mRootRef;
 
     private TextView mTitleView;
@@ -93,11 +96,7 @@ public class ChatActivity extends AppCompatActivity {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_chat);
 
-<<<<<<< HEAD
-=======
-        mChatToolbar = (Toolbar) findViewById(R.id.chat_app_bar);
-        setSupportActionBar(mChatToolbar);
->>>>>>> master
+
 
         ActionBar actionBar = getSupportActionBar();
 
@@ -129,7 +128,7 @@ public class ChatActivity extends AppCompatActivity {
         mAdapter = new MessageAdapter(messagesList);
 
         mMessagesList = (RecyclerView) findViewById(R.id.messages_list);
-        mRefreshLayout = (SwipeRefreshLayout) findViewById(R.id.message_swipe_layout);
+       // mRefreshLayout = (SwipeRefreshLayout) findViewById(R.id.message_swipe_layout);
         mLinearLayout = new LinearLayoutManager(this);
 
         mMessagesList.setHasFixedSize(true);
@@ -144,56 +143,40 @@ public class ChatActivity extends AppCompatActivity {
 
         loadMessages();
 
+        mUserDatabase = FirebaseDatabase.getInstance().getReference().child("User").child(mChatUser);
+        mUserDatabase.keepSynced(true);
 
-        mTitleView.setText(userName);
+        mUserDatabase.addValueEventListener(new ValueEventListener() {
+            @Override
+            public void onDataChange(DataSnapshot dataSnapshot) {
 
-<<<<<<< HEAD
+                String name = dataSnapshot.child("name").getValue().toString();
+                String image = dataSnapshot.child("image").getValue().toString();
+                String status = dataSnapshot.child("status").getValue().toString();
+                String online = dataSnapshot.child("online").getValue().toString();
+                String thumb_image = dataSnapshot.child("thumb_image").getValue().toString();
+
+
+
+                mTitleView.setText(name);
+                if(online.equals("true")){mLastSeenView.setText("Online");}
+                else mLastSeenView.setText("Offline");
+
+                Picasso.get().load(image).into(mProfileImage);
+            }
+
+            @Override
+            public void onCancelled(DatabaseError databaseError) {
+
+            }
+        });
+
+
         mRootRef.child("User").child(mChatUser).addValueEventListener(new ValueEventListener() {
             @Override
             public void onDataChange(DataSnapshot dataSnapshot) {
 
-              //  String online = dataSnapshot.child("online").getValue().toString();
-//                String image = dataSnapshot.child("image").getValue().toString();
 
-            ///    if(online.equals("true")) {
-
-               //     mLastSeenView.setText("Online");
-
-               // } else {
-
-                  //  GetTimeAgo getTimeAgo = new GetTimeAgo();
-
-                  //  long lastTime = Long.parseLong(online);
-
-                  //  String lastSeenTime = getTimeAgo.getTimeAgo(lastTime, getApplicationContext());
-
-                  //  mLastSeenView.setText(lastSeenTime);
-
-             //   }
-=======
-        mRootRef.child("Users").child(mChatUser).addValueEventListener(new ValueEventListener() {
-            @Override
-            public void onDataChange(DataSnapshot dataSnapshot) {
-
-                String online = dataSnapshot.child("online").getValue().toString();
-                String image = dataSnapshot.child("image").getValue().toString();
-
-                if(online.equals("true")) {
-
-                    mLastSeenView.setText("Online");
-
-                } else {
-
-                    GetTimeAgo getTimeAgo = new GetTimeAgo();
-
-                    long lastTime = Long.parseLong(online);
-
-                    String lastSeenTime = getTimeAgo.getTimeAgo(lastTime, getApplicationContext());
-
-                    mLastSeenView.setText(lastSeenTime);
-
-                }
->>>>>>> master
 
             }
 
@@ -241,8 +224,6 @@ public class ChatActivity extends AppCompatActivity {
             }
         });
 
-
-
         mChatSendBtn.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
@@ -266,24 +247,6 @@ public class ChatActivity extends AppCompatActivity {
 
             }
         });
-
-
-
-        mRefreshLayout.setOnRefreshListener(new SwipeRefreshLayout.OnRefreshListener() {
-            @Override
-            public void onRefresh() {
-
-                mCurrentPage++;
-
-                itemPos = 0;
-
-                loadMoreMessages();
-
-
-            }
-        });
-
-
     }
 
 
@@ -351,101 +314,24 @@ public class ChatActivity extends AppCompatActivity {
 
     }
 
-    private void loadMoreMessages() {
-
-        DatabaseReference messageRef = mRootRef.child("messages").child(mCurrentUserId).child(mChatUser);
-
-        Query messageQuery = messageRef.orderByKey().endAt(mLastKey).limitToLast(10);
-
-        messageQuery.addChildEventListener(new ChildEventListener() {
-            @Override
-            public void onChildAdded(DataSnapshot dataSnapshot, String s) {
-
-
-                Messages message = dataSnapshot.getValue(Messages.class);
-                String messageKey = dataSnapshot.getKey();
-
-                if(!mPrevKey.equals(messageKey)){
-
-                    messagesList.add(itemPos++, message);
-
-                } else {
-
-                    mPrevKey = mLastKey;
-
-                }
-
-
-                if(itemPos == 1) {
-
-                    mLastKey = messageKey;
-
-                }
-
-
-                Log.d("TOTALKEYS", "Last Key : " + mLastKey + " | Prev Key : " + mPrevKey + " | Message Key : " + messageKey);
-
-                mAdapter.notifyDataSetChanged();
-
-                mRefreshLayout.setRefreshing(false);
-
-                mLinearLayout.scrollToPositionWithOffset(10, 0);
-
-            }
-
-            @Override
-            public void onChildChanged(DataSnapshot dataSnapshot, String s) {
-
-            }
-
-            @Override
-            public void onChildRemoved(DataSnapshot dataSnapshot) {
-
-            }
-
-            @Override
-            public void onChildMoved(DataSnapshot dataSnapshot, String s) {
-
-            }
-
-            @Override
-            public void onCancelled(DatabaseError databaseError) {
-
-            }
-        });
-
-    }
 
     private void loadMessages() {
 
         DatabaseReference messageRef = mRootRef.child("messages").child(mCurrentUserId).child(mChatUser);
 
-        Query messageQuery = messageRef.limitToLast(mCurrentPage * TOTAL_ITEMS_TO_LOAD);
+       // Query messageQuery = messageRef.limitToLast(mCurrentPage * TOTAL_ITEMS_TO_LOAD);
 
 
-        messageQuery.addChildEventListener(new ChildEventListener() {
+        messageRef.addChildEventListener(new ChildEventListener() {
             @Override
             public void onChildAdded(DataSnapshot dataSnapshot, String s) {
 
                 Messages message = dataSnapshot.getValue(Messages.class);
 
-                itemPos++;
-
-                if(itemPos == 1){
-
-                    String messageKey = dataSnapshot.getKey();
-
-                    mLastKey = messageKey;
-                    mPrevKey = messageKey;
-
-                }
-
                 messagesList.add(message);
                 mAdapter.notifyDataSetChanged();
-
                 mMessagesList.scrollToPosition(messagesList.size() - 1);
 
-                mRefreshLayout.setRefreshing(false);
 
             }
 
@@ -519,6 +405,9 @@ public class ChatActivity extends AppCompatActivity {
                 }
             });
 
+        }
+        else{
+            Toast.makeText(ChatActivity.this,"Vui lòng nhập vào tin nhắn ... ", Toast.LENGTH_SHORT).show();
         }
 
     }
