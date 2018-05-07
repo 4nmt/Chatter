@@ -18,7 +18,11 @@
         app:showAsAction="never"
         ></item>
     <item android:title="Đổi password"
-        android:id="@+id/btn_change"
+        android:id="@+id/btn_changepassword"
+        app:showAsAction="never"
+        ></item>
+    <item android:title="Xóa tài khoản"
+        android:id="@+id/btn_del"
         app:showAsAction="never"
         ></item>
     <item android:title="Đăng xuất"
