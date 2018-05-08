@@ -3,7 +3,7 @@
 <RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    android:background="@color/colorPrimary">
+    >
 
     <de.hdodenhof.circleimageview.CircleImageView
         android:id="@+id/custom_bar_image"
@@ -21,7 +21,7 @@
         android:layout_alignParentStart="true"
         android:layout_alignParentTop="true"
         android:text="Display Name"
-        android:textColor="@android:color/white"
+
         android:textSize="18sp" />
 
     <TextView
@@ -31,7 +31,7 @@
         android:layout_alignParentStart="true"
         android:layout_below="@+id/custom_bar_title"
         android:text="Last Seen"
-        android:textColor="@android:color/white"
+
         android:textSize="13sp" />
 
 </RelativeLayout>
