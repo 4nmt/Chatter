@@ -51,7 +51,8 @@
         <activity android:name=".UserSearchActivity" />
         <activity android:name=".ForgetPasswordActivity" />
         <activity android:name=".ChangePassword" />
-        <activity android:name=".DeleteUser"></activity>
+        <activity android:name=".DeleteUser" />
+        <activity android:name=".ChangeEmail"></activity>
     </application>
 
 </manifest>

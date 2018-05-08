@@ -21,6 +21,10 @@
         android:id="@+id/btn_changepassword"
         app:showAsAction="never"
         ></item>
+    <item android:title="Đổi email"
+        android:id="@+id/btn_changeemail"
+        app:showAsAction="never"
+        ></item>
     <item android:title="Xóa tài khoản"
         android:id="@+id/btn_del"
         app:showAsAction="never"

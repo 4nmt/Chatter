@@ -119,6 +119,10 @@ public class MainActivity extends AppCompatActivity {
             Intent settingsIntent = new Intent(MainActivity.this,ChangePassword.class);
             startActivity(settingsIntent);
         }
+        if(item.getItemId() == R.id.btn_changeemail){
+            Intent settingsIntent = new Intent(MainActivity.this,ChangeEmail.class);
+            startActivity(settingsIntent);
+        }
         if(item.getItemId() == R.id.btn_del){
             user.delete()
                     .addOnCompleteListener(new OnCompleteListener<Void>() {
