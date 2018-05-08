@@ -14,12 +14,16 @@ import com.google.android.gms.tasks.OnCompleteListener;
 import com.google.android.gms.tasks.Task;
 import com.google.firebase.auth.FirebaseAuth;
 import com.google.firebase.auth.FirebaseUser;
+import com.google.firebase.database.DatabaseReference;
 
-public class ChangePassword extends AppCompatActivity {
+public class ChangePassword extends AppCompatActivity  {
     private EditText newpassword;
     private FirebaseAuth auth;
     private ProgressDialog dialog;
     private Button btn_changepass;
+    private FirebaseUser user;
+
+
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -29,13 +33,13 @@ public class ChangePassword extends AppCompatActivity {
         newpassword=findViewById(R.id.c_pass);
         auth=FirebaseAuth.getInstance();
         btn_changepass= findViewById(R.id.btn_changepassword);
-
+        user = FirebaseAuth.getInstance().getCurrentUser();
         btn_changepass.setOnClickListener(new View.OnClickListener() {
 
             @Override
             public void onClick(View v) {
 
-                FirebaseUser user = FirebaseAuth.getInstance().getCurrentUser();
+
                 String newPassword = newpassword.getText().toString();
 
                 dialog.setMessage("Đang đổi mật khẩu");
@@ -60,7 +64,10 @@ public class ChangePassword extends AppCompatActivity {
                                 else
                                 {
                                     dialog.dismiss();
-                                    Toast.makeText(ChangePassword.this,"Mật khẩu không đổi được",Toast.LENGTH_LONG).show();
+                                    Toast.makeText(ChangePassword.this,"Mật khẩu hiện không đổi được",Toast.LENGTH_LONG).show();
+                                    finish();
+                                    Intent i= new Intent(ChangePassword.this,MainActivity.class);
+                                    startActivity(i);
                                 }
                             }
                         });
