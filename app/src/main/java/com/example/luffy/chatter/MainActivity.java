@@ -123,6 +123,10 @@ public class MainActivity extends AppCompatActivity {
             Intent settingsIntent = new Intent(MainActivity.this,ChangeEmail.class);
             startActivity(settingsIntent);
         }
+        if(item.getItemId() == R.id.btn_verifyemail){
+            Intent settingsIntent = new Intent(MainActivity.this,VerificatyEmail.class);
+            startActivity(settingsIntent);
+        }
         if(item.getItemId() == R.id.btn_del){
             user.delete()
                     .addOnCompleteListener(new OnCompleteListener<Void>() {
