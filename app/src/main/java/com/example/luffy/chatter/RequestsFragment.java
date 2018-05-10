@@ -38,9 +38,7 @@ import java.util.Map;
 import de.hdodenhof.circleimageview.CircleImageView;
 
 
-/**
- * A simple {@link Fragment} subclass.
- */
+
 public class RequestsFragment extends Fragment {
 
 

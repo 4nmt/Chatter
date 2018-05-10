@@ -33,7 +33,7 @@ public class ChatsFragment extends Fragment {
     private DatabaseReference mUserDatabase;
 
     private  View mMainView;
-    FirebaseUser mCurrent_user;
+    private FirebaseUser mCurrent_user;
     public ChatsFragment() {
 
     }
